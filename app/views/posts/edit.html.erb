@@ -1,0 +1,22 @@
+<div class="box">
+	<%= form_for(@post) do |f| %>
+	<h1> Editing Book</h1>
+		<div class="field">
+			 <a>Title</a><br>
+			   <%= f.text_field :title, class:"book_title" %>
+		</div>
+		<div class="field">
+			 <a>Body</a><br>
+			 <%= f.text_area :body, class:"book_body" %>
+		</div>
+		<div class="field">
+			 <div class="pushb">
+			 	<%= f.submit 'Update Book' %>
+			 </div>
+			<a><%= link_to "Show", post_path(@post.id), class:"show_#{@post.id}" %></a>
+			|
+			<a><%= link_to "Back", "/posts", class:"back" %></a>
+		</div>
+	</div>
+	<% end %>
+</div>

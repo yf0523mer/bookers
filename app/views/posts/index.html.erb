@@ -1,0 +1,36 @@
+<% if flash[:notice] %>
+  <p id="notice"><%= flash[:notice] %></p>
+<% end %>
+<h1> Books</h1>
+    <table>
+    		<thead>
+    			<tr>
+    				<th>Title</th>
+    				<th>Body</th>
+    				<th = colspan></th>
+    			</tr>
+    		</thead>
+	    	<% @posts.each do |post| %>
+	    	<tr>
+	    		<td><%= post.title %></td>
+	    		<td><%= post.body %></td>
+	    		<td><%= link_to "Show", post_path(post.id), class:"show_#{post.id}" %>
+	    			<%= link_to "Edit", edit_post_path(post.id), class:"edit_#{post.id}" %>
+	    			<%= link_to "Destroy", post_path(post.id), method: :delete, class:"destroy_#{post.id}", "data-confirm" => "Are you sure？" %></td>
+	    	</tr>
+	 	<% end %>
+	 </table>
+		<h2> New book</h2>
+	<%= form_for(@post) do |f| %>
+	<div class="box-title">Title<br>
+	<div class="field">
+    <%= f.text_field :title, class:"book_title" %>
+	</div>
+	</div>
+    <div class="box-title">Body<br>
+    <div class="field">
+    	<%= f.text_area :body, class:"book_body" %>
+	</div>
+	</div>
+   		<%= f.submit 'Create Book' %>
+<% end %>
